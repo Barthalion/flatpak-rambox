@@ -1,0 +1,85 @@
+{
+  "app-id": "pro.rambox.Rambox",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "3.24",
+  "sdk": "org.gnome.Sdk",
+  "command": "rambox",
+  "separate-locales": false,
+  "finish-args": [
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=pulseaudio",
+    "--share=network",
+    "--device=dri",
+    "--talk-name=org.freedesktop.Notifications",
+    "--extra-data=rambox.tar.gz:20ae68f715f06e944a0c669c31e9a469e0ce45de557b4437a448c0008764a173:58930873::https://github.com/saenzramiro/rambox/releases/download/0.5.9/Rambox-0.5.9-x64.tar.gz"
+  ],
+  "modules": [
+    {
+      "name": "rambox",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -Dm755 apply_extra /app/bin/apply_extra",
+        "install -Dm755 rambox /app/bin/rambox",
+        "install -Dm644 rambox.png /app/share/icons/hicolor/256x256/apps/pro.rambox.Rambox.png",
+        "install -Dm644 rambox.desktop /app/share/applications/pro.rambox.Rambox.desktop"
+      ],
+      "sources": [
+        {
+          "type": "script",
+          "dest-filename": "apply_extra",
+          "commands": [
+            "tar xf rambox.tar.gz",
+            "rm -f rambox.tar.gz",
+            "mv Rambox-0.5.9 rambox"
+          ]
+        },
+        {
+          "type": "script",
+          "dest-filename": "rambox",
+          "commands": [
+            "exec env TMPDIR=$XDG_CACHE_HOME /app/extra/rambox/rambox $@"
+          ]
+        },
+        {
+          "type": "file",
+          "path": "rambox.desktop"
+        },
+        {
+          "type": "file",
+          "path": "rambox.png"
+        }
+      ]
+    },
+    {
+      "name": "gconf",
+      "config-opts": [
+        "--disable-orbit", "--disable-static",
+        "--disable-introspection", "--without-openldap"
+      ],
+      "cleanup": ["/bin", "/include", "/lib/pkgconfig", "/lib/*.la", "/share", "/etc"],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "http://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-3.2.6.tar.xz",
+          "sha256": "1912b91803ab09a5eed34d364bf09fe3a2a9c96751fde03a4e0cfa51a04d784c"
+        }
+      ]
+    },
+    {
+      "name": "udev",
+      "config-opts": [
+        "--disable-hwdb", "--disable-logging", "--disable-gudev",
+        "--disable-introspection", "--disable-keymap", "--disable-mtd_probe"
+      ],
+      "cleanup": ["/share", "/include", "/bin", "/sbin"],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "http://kernel.org/pub/linux/utils/kernel/hotplug/udev-175.tar.bz2",
+          "sha256": "4c7937fe5a1521316ea571188745b9a00a9fdf314228cffc53a7ba9e5968b7ab"
+        }
+      ]
+    }
+  ]
+}
