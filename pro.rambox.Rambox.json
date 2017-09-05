@@ -23,7 +23,8 @@
         "install -Dm755 apply_extra /app/bin/apply_extra",
         "install -Dm755 rambox /app/bin/rambox",
         "install -Dm644 rambox.png /app/share/icons/hicolor/256x256/apps/pro.rambox.Rambox.png",
-        "install -Dm644 rambox.desktop /app/share/applications/pro.rambox.Rambox.desktop"
+        "install -Dm644 rambox.desktop /app/share/applications/pro.rambox.Rambox.desktop",
+        "install -Dm644 pro.rambox.Rambox.appdata.xml /app/share/appdata/pro.rambox.Rambox.appdata.xml"
       ],
       "sources": [
         {
@@ -49,6 +50,10 @@
         {
           "type": "file",
           "path": "rambox.png"
+        },
+        {
+          "type": "file",
+          "path": "pro.rambox.Rambox.appdata.xml"
         }
       ]
     }
