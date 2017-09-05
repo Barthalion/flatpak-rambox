@@ -1,9 +1,9 @@
 {
   "app-id": "pro.rambox.Rambox",
   "base": "io.atom.electron.BaseApp",
-  "runtime": "org.gnome.Platform",
-  "runtime-version": "3.24",
-  "sdk": "org.gnome.Sdk",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "1.6",
+  "sdk": "org.freedesktop.Sdk",
   "command": "rambox",
   "separate-locales": false,
   "finish-args": [
