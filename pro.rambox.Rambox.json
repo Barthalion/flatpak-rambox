@@ -13,7 +13,7 @@
     "--share=network",
     "--device=dri",
     "--talk-name=org.freedesktop.Notifications",
-    "--extra-data=rambox.tar.gz:2973863dd2653887fc9b9da7bbafd22b019c52c64435639bba3792481be63a6e:58986128::https://github.com/saenzramiro/rambox/releases/download/0.5.11/Rambox-0.5.11.tar.gz"
+    "--extra-data=rambox.tar.gz:f41049ef2082ce5e8f34463ba42ee1cc953e46cf4828fdd0bd1e9f1d5468601d:58986253::https://github.com/saenzramiro/rambox/releases/download/0.5.12/Rambox-0.5.12-x64.tar.gz"
   ],
   "modules": [
     {
